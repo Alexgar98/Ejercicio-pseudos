@@ -20,12 +20,45 @@
             font-weight: bold;
             font-style: italic;
         }
-        div::after {
+        p:last-of-type::after {
             content: "...";
         }
         div:nth-child(odd) {
             background-color:lightgray;
+        } /* Hasta aquí el ejercicio de pseudoelementos*/
+        .modal-contenido {
+            width:40%;
+            height: 20%;
+            padding: 10px 20px;
+            margin: 20% auto;
+            position:relative;
+            text-align: center;
+            color: red;
+        } /*Contenido del modal*/
+        .modal {
+            background-color: rgba(0,0,0,.8);
+            position:fixed;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            opacity:0;
+            pointer-events:none;
+            transition: all 1s;
+            /*Fondo de fuera del modal*/
         }
+        .modal-contenido::first-letter {
+            font-size: 100%;
+            font-weight: normal;
+            font-style: normal;
+        }
+        .modal-contenido p:last-of-type::after {
+            content: none;
+        } /*Anulo los pseudoelementos dentro del modal*/
+        #prueba-modal:target {
+            opacity:1;
+            pointer-events:auto;
+        } /*Esto hace el visible el modal cuando se hace click*/
     </style>
 </head>
 <body>
@@ -54,7 +87,13 @@
         <p>Dime por que estas buscando una lágrima en la arena</p>
         <p>Después de un invierno malo</p></div>
     
-    <p>https://www.letras.com/fito-fitipaldis/614056/</p>
-    <p>Fito y Fitipaldis</p>
+        <a href="#prueba-modal">Fuente</a>
+        <div id="prueba-modal" class="modal">
+          <div class="modal-contenido">
+            <p>https://www.letras.com/fito-fitipaldis/614056/</p>
+            <p>Fito y Fitipaldis</p>
+            <a href="#">Sácame de aquí</a>
+          </div>  
+        </div>
 </body>
 </html>
